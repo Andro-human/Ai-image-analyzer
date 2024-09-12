@@ -36,16 +36,6 @@ const MainContainer = () => {
     });
   };
 
-  //   const generateKeywords = (text) => {
-  //     const words = text.split(/\s+/);
-  //     const keywordsSet = new Set();
-  //     words.forEach(word => {
-  //         if (word.length > 4 && !("this", "that", "from", "with", "have", "image").includes(word.toLowerCase())) {
-  //             keywordsSet.add(word);
-  //         }
-  //     })
-  //     setKeywords(Array.from(keywordsSet).slice(0,5))
-  //   }
 
   const identifyImage = async (additionalPrompt = "") => {
     if (!image) return;
