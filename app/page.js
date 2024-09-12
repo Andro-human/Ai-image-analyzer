@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import HowItWorks from "@/components/HowItWorks";
 import MainContainer from "@/components/MainContainer";
@@ -9,6 +10,7 @@ const page = () => {
     <Header />
     <MainContainer />
     <HowItWorks />
+    <Footer />
   </Box>
   );
 };

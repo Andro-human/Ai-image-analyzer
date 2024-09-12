@@ -36,7 +36,6 @@ const MainContainer = () => {
     });
   };
 
-
   const identifyImage = async (additionalPrompt = "") => {
     if (!image) return;
     setIsLoading(true);
@@ -139,6 +138,7 @@ const MainContainer = () => {
           md: "60%",
         },
         margin: "2rem",
+        padding: !keywords || keywords.length === 0 ? "0.4rem" : "0",
       }}
     >
       <Typography
@@ -236,75 +236,82 @@ const MainContainer = () => {
           >
             {result}
           </Typography>
-
-          <Box
-            sx={{ display: "flex", flexDirection: "column", padding: "1rem" }}
-          >
-            <Typography
-              sx={{
-                fontSize: "1.2rem",
-                weight: "400",
-                fontFamily: "Playfair Display",
-              }}
+          {keywords?.length > 0 && relatedQuestions?.length > 0 && (
+            <Box
+              sx={{ display: "flex", flexDirection: "column", padding: "1rem" }}
             >
-              Related Keywords
-            </Typography>
-            <Typography>
-              {keywords.map((keyword, index) => {
-                return (
-                  <Button
-                    variant="outlined"
-                    key={index}
-                    sx={{
-                      margin: "0.5rem",
-                      color: "rgb(30, 64, 175)",
-                      backgroundColor: "rgba(50, 130, 246, .2)",
-                      fontSize: "12px",
-                      padding: "0.5rem",
-                      fontFamily: "Georgia",
-                    }}
-                    onClick={() => regenerateContent(keyword)}
-                  >
-                    {keyword}
-                  </Button>
-                );
-              })}
-            </Typography>
+              <Typography
+                sx={{
+                  fontSize: "1.2rem",
+                  weight: "400",
+                  fontFamily: "Playfair Display",
+                }}
+              >
+                Related Keywords
+              </Typography>
+              <Typography>
+                {keywords.map((keyword, index) => {
+                  return (
+                    <Button
+                      variant="outlined"
+                      key={index}
+                      sx={{
+                        margin: "0.5rem",
+                        color: "rgb(30, 64, 175)",
+                        backgroundColor: "rgba(50, 130, 246, .2)",
+                        fontSize: "12px",
+                        padding: "0.5rem",
+                        fontFamily: "Georgia",
+                        "&:hover": {
+                          backgroundColor: "rgba(50, 130, 246, .6)", // Color on hover
+                        },
+                      }}
+                      onClick={() => regenerateContent(keyword)}
+                    >
+                      {keyword}
+                    </Button>
+                  );
+                })}
+              </Typography>
 
-
-            <Typography
-              variant="h6"
-              sx={{
-                marginTop: "1rem",
-                fontSize: "1.2rem",
-                weight: "400",
-                fontFamily: "Playfair Display",
-              }}
-            >
-              Related Questions
-            </Typography>
-            <Typography>
-              {relatedQuestions.map((questions, index) => {
-                return (
-                  <Button
-                    variant="outlined"
-                    sx={{
-                      margin: "0.5rem 0.7rem",
-                      color: "rgb(30, 64, 175)",
-                      backgroundColor: "rgba(50, 130, 246, .2)",
-                      fontSize: "12px",
-                      padding: "0.4rem",
-                      fontFamily: "Georgia",
-                    }}
-                    key={index}
-                    onClick={() => regenerateContent(questions)}
-                  >
-                    {questions}
-                  </Button>
-                );
-              })}
-            </Typography>
-          </Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  marginTop: "1rem",
+                  fontSize: "1.2rem",
+                  weight: "400",
+                  fontFamily: "Playfair Display",
+                }}
+              >
+                Related Questions
+              </Typography>
+              <Typography>
+                {relatedQuestions.map((questions, index) => {
+                  return (
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        margin: "0.5rem 0.7rem",
+                        color: "rgb(30, 64, 175)",
+                        backgroundColor: "rgba(50, 130, 246, .2)",
+                        fontSize: "12px",
+                        padding: "0.4rem",
+                        fontFamily: "Georgia",
+                        "&:hover": {
+                          backgroundColor: "rgba(50, 130, 246, .6)", // Color on hover
+                          // color: "rgb(31, 64, 175)"
+                        },
+                      }}
+                      key={index}
+                      onClick={() => regenerateContent(questions)}
+                    >
+                      {questions}
+                    </Button>
+                  );
+                })}
+              </Typography>
+            </Box>
+          )}
         </Box>
       )}
     </Card>

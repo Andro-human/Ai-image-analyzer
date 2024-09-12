@@ -56,7 +56,11 @@ const Header = () => {
               xs: "0.9rem",
               sm: "1.2rem",
             },
+            "&:hover": {
+                color: "#0056a0", // Color on hover
+              },
           }}
+          href="#"
         >
           Home
         </Link>
@@ -69,7 +73,11 @@ const Header = () => {
               xs: "0.9rem",
               sm: "1.2rem",
             },
+            "&:hover": {
+                color: "#0056a0", // Color on hover
+              },
           }}
+          href="#how-it-works"
         >
           How It Works
         </Link>
