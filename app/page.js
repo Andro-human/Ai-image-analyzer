@@ -1,12 +1,13 @@
 import Header from "@/components/Header";
 import MainContainer from "@/components/MainContainer";
+import { Box } from "@mui/material";
 
 const page = () => {
   return (
-    <>
-      <Header />
-      <MainContainer />
-    </>
+    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
+    <Header />
+    <MainContainer />
+  </Box>
   );
 };
 

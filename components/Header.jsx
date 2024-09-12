@@ -16,7 +16,7 @@ const Header = () => {
           display: "flex",
           flexDirection: "row",
           margin: "1rem",
-          backgroundColor: "inherit"
+          alignItems: "center"
         }}
       >
         <Avatar
@@ -24,19 +24,38 @@ const Header = () => {
           alt="Logo"
           sx={{ marginRight: "10px" }}
         />
-        <Typography variant="h6" sx={{ color: "#0077b6", fontWeight: "bold", backgroundColor: "#ffffff"}}>
+        <Typography
+          variant="h6"
+          sx={{
+            color: "#0077b6",
+            fontWeight: "bold",
+            backgroundColor: "#ffffff",
+            fontSize: {
+              xs: "1rem",
+              sm: "1.5rem",
+            },
+          }}
+        >
           Image Analyzer
         </Typography>
       </Box>
       <Box sx={{ flexGrow: 1 }}></Box>
-      <Box sx={{margin: "1rem",  backgroundColor: "inherit"}}>
+      <Box sx={{margin: {
+                xs: "0",
+                sm:"1rem",
+            }, }}>
         <Link
           sx={{
             cursor: "pointer",
             textDecoration: "none",
-            margin: "0.6rem",
-            fontSize: "1.2rem",
-            backgroundColor: "inherit"
+            margin: {
+                xs: "0",
+                sm:"0.6rem",
+            },
+            fontSize: {
+              xs: "0.9rem",
+              sm: "1.2rem",
+            },
           }}
         >
           Home
@@ -46,22 +65,13 @@ const Header = () => {
             cursor: "pointer",
             textDecoration: "none",
             margin: "0.6rem",
-            fontSize: "1.2em",
-            backgroundColor: "inherit"
+            fontSize: {
+              xs: "0.9rem",
+              sm: "1.2rem",
+            },
           }}
         >
           How It Works
-        </Link>
-        <Link
-          sx={{
-            cursor: "pointer",
-            textDecoration: "none",
-            margin: "0.6rem",
-            fontSize: "1.2rem",
-            backgroundColor: "inherit"
-          }}
-        >
-          Features
         </Link>
       </Box>
     </Box>
