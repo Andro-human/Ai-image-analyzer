@@ -4,6 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Box, Button, Card, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import {toast} from "react-hot-toast"
 
 const MainContainer = () => {
   const [image, setImage] = useState(null);
@@ -67,6 +68,7 @@ const MainContainer = () => {
       generateKeywords(text);
       generateRelatedQuestions(text);
     } catch (error) {
+      toast.error("The model is overloaded. Please try again later.");
       console.log(error?.message);
     } finally {
       setIsLoading(false);
