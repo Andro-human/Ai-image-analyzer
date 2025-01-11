@@ -1,10 +1,12 @@
 "use client";
 
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Box, Button, Card, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
+import { AnimatedModalDemo } from "./AnimatedModal";
 
 const MainContainer = () => {
   const [image, setImage] = useState(null);
@@ -12,6 +14,7 @@ const MainContainer = () => {
   const [result, setResult] = useState(null);
   const [keywords, setKeywords] = useState([]);
   const [relatedQuestions, setRelatedQuestions] = useState([]);
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -176,17 +179,23 @@ const MainContainer = () => {
           style={{ display: "none" }}
           onChange={handleFileChange}
         ></input>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={() => document.querySelector("input[type='file']").click()}
-          sx={{
-            display: "flex",
-            margin: "1rem",
-          }}
-        >
-          Choose File
-        </Button>
+        <SignedIn>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => document.querySelector("input[type='file']").click()}
+            sx={{
+              display: "flex",
+              margin: "1rem",
+            }}
+          >
+            Choose File
+          </Button>
+        </SignedIn>
+        <SignedOut>
+        <AnimatedModalDemo />
+        </SignedOut>
+
         {image && (
           <Box sx={{ margin: "1rem", boxShadow: "2" }}>
             <Image
@@ -316,6 +325,8 @@ const MainContainer = () => {
           )}
         </Box>
       )}
+
+
     </Card>
   );
 };
